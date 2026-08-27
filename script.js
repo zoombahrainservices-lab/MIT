@@ -1,6 +1,6 @@
 (() => {
-  const FRAME_COUNT = 80;
-  const EASE = 0.12;
+  const FRAME_COUNT = 70;
+  const EASE = 0.1;
   const frameSrc = (n) => `hero_webp/hero-frame-${String(n).padStart(4, "0")}.webp`;
 
   const start = () => {
