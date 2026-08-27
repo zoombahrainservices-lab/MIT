@@ -64,6 +64,55 @@
     if (canvas && hero && !reduceMotion) {
       initSequence(hero, pin, canvas);
     }
+
+    initCounters(reduceMotion);
+  };
+
+  const initCounters = (reduceMotion) => {
+    const counters = Array.from(document.querySelectorAll("[data-count]"));
+    if (!counters.length) return;
+
+    const finish = (el) => {
+      el.textContent = el.getAttribute("data-count");
+    };
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      counters.forEach(finish);
+      return;
+    }
+
+    const easeOut = (t) => 1 - ((1 - t) ** 2);
+    const run = (el, delay) => {
+      const end = Number(el.getAttribute("data-count"));
+      if (!Number.isFinite(end)) return;
+      const startValue = end > 99 ? end - 28 : 0;
+      const duration = end > 99 ? 700 : 1000;
+      el.textContent = String(startValue);
+      window.setTimeout(() => {
+        const startTime = performance.now();
+        const step = (now) => {
+          const t = Math.min(1, (now - startTime) / duration);
+          el.textContent = String(Math.round(startValue + (end - startValue) * easeOut(t)));
+          if (t < 1) requestAnimationFrame(step);
+          else finish(el);
+        };
+        requestAnimationFrame(step);
+      }, delay);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        Array.from(entry.target.querySelectorAll("[data-count]")).forEach((el, index) => {
+          run(el, index * 90);
+        });
+      });
+    }, { threshold: 0.35 });
+
+    const strip = document.querySelector(".trust-grid");
+    if (strip) observer.observe(strip);
+    else counters.forEach(finish);
   };
 
   const initSequence = (hero, pin, canvas) => {
