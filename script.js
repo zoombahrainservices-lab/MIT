@@ -193,7 +193,6 @@
       hero.style.setProperty("--p-lines", `${(easeOut * 22).toFixed(2)}px`);
       hero.style.setProperty("--p-glow-x", `${(-easeOut * 40).toFixed(2)}px`);
       hero.style.setProperty("--p-glow-y", `${(easeOut * 52).toFixed(2)}px`);
-      hero.style.setProperty("--p-foot", `${(easeOut * 24).toFixed(2)}px`);
     };
 
     const loadImage = (n) => new Promise((resolve) => {

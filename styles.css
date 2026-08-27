@@ -46,7 +46,6 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
   --p-lines: 0px;
   --p-glow-x: 0px;
   --p-glow-y: 0px;
-  --p-foot: 0px;
   --hero-navy: #061B31;
   --hero-cyan: #69C1DD;
   --hero-orange: #FF7417;
@@ -273,31 +272,6 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .date-detail { position: relative; display: flex; gap: 15px; align-items: flex-start; margin-top: 20px; color: var(--hero-text); font-size: 13px; line-height: 1.45; font-weight: 650; }
 .date-detail svg { width: 20px; flex: none; color: var(--hero-orange); }
 .date-detail small { display: block; margin-bottom: 4px; color: var(--hero-cyan); font-size: 12px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
-
-.hero-foot {
-  position: absolute;
-  z-index: 3;
-  left: 0;
-  right: 0;
-  bottom: calc(34px + var(--p-foot));
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 16px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(255,255,255,.18);
-}
-.hero-foot p, .hero-foot span {
-  margin: 0;
-  color: rgba(255,255,255,.72);
-  font-size: 12px;
-  font-weight: 720;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-.hero-foot p { justify-self: start; color: var(--lime); }
-.hero-foot span:nth-of-type(1) { justify-self: center; text-align: center; }
-.hero-foot span:nth-of-type(2) { justify-self: end; text-align: right; }
 
 .reveal { opacity: 0; transform: translateY(22px); animation: revealUp .8s cubic-bezier(.2,.75,.25,1) forwards; }
 .reveal.one { animation-delay: .18s; }
@@ -592,14 +566,6 @@ footer { background: var(--ivory); }
   .date-lockup div span:first-child { font-size: 20px; }
   .date-rule { display: none; }
   .date-detail { margin: 0; }
-  .hero-foot {
-    position: relative;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    margin-top: 28px;
-    padding-bottom: 8px;
-  }
   .trust-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid, .section-head, .programme-grid, .registration-grid { grid-template-columns: 1fr; gap: 48px; }
   .about-copy { padding: 0; }
@@ -636,14 +602,6 @@ footer { background: var(--ivory); }
   .date-lockup { float: none; width: auto; margin: 10px 0 22px; }
   .date-lockup strong { font-size: 88px; }
   .date-detail { margin: 14px 0; }
-  .hero-foot {
-    grid-template-columns: 1fr;
-    justify-items: start;
-    gap: 10px;
-  }
-  .hero-foot p, .hero-foot span { line-height: 1.5; }
-  .hero-foot span:nth-of-type(1),
-  .hero-foot span:nth-of-type(2) { justify-self: start; text-align: left; }
   .trust-grid { grid-template-columns: 1fr 1fr; }
   .trust-grid > div { display: grid; min-height: 128px; padding: 18px; border-bottom: 1px solid var(--line); }
   .trust-grid strong { font-size: 34px; }
